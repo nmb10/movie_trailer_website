@@ -98,7 +98,11 @@ main_page_head = '''
               'src': sourceUrl,
               'frameborder': 0
             }));
+
+            // save current movie index to allow next/prev actions use it later.
             $("#trailer-video-container").data("current_movie", $movie.index());
+
+            // properly line-up prev/next buttons.
             if ($movie.index() > 0) {
                 $(".prev").show();
             } else {
@@ -113,7 +117,7 @@ main_page_head = '''
         };
 
         // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile div', function (event) {
+        $(document).on('click', '.movie-tile', function (event) {
             showTrailer($(this));
         });
 
