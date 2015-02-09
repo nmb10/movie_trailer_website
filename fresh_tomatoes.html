@@ -108,8 +108,12 @@
         };
 
         // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
+        $(document).on('click', '.movie-tile div', function (event) {
             showTrailer($(this));
+        });
+
+        $(document).on('click', '.imdb-link', function(e) {
+            e.stopPropagation();
         });
 
         $(document).on('click', '.next', function (e) {
@@ -153,7 +157,7 @@
         <a href="#" class="next fr" title="Next">Next</a>
       </div>
     </div>
-    
+
     <!-- Main Page Content -->
     <div class="container">
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -167,28 +171,43 @@
     <div class="container">
       
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="BpJYNVhGf1s" data-toggle="modal" data-target="#trailer">
-    <img src="http://ia.media-imdb.com/images/M/MV5BMTk0NDg4NjQ5N15BMl5BanBnXkFtZTgwMzkzNTgyMTE@._V1_SX214_AL_.jpg" width="220" height="342">
-    <h2>Game of the thrones</h2>
+    <div title="show preview">
+        <img src="http://ia.media-imdb.com/images/M/MV5BMTk0NDg4NjQ5N15BMl5BanBnXkFtZTgwMzkzNTgyMTE@._V1_SX214_AL_.jpg" width="220" height="342">
+        <h2>Game of Thrones</h2>
+    </div>
+    <a href="http://www.imdb.com/title/tt0944947/" class="imdb-link" target="_blank" title="Show more on imdb">more on imdb</a>
 </div>
 
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="cd-go0oBF4Y" data-toggle="modal" data-target="#trailer">
-    <img src="http://ia.media-imdb.com/images/M/MV5BMTQ0NjUzMDMyOF5BMl5BanBnXkFtZTgwODA1OTU0MDE@._V1_SX214_AL_.jpg" width="220" height="342">
-    <h2>The Big Lebowski</h2>
+    <div title="show preview">
+        <img src="http://ia.media-imdb.com/images/M/MV5BMTQ0NjUzMDMyOF5BMl5BanBnXkFtZTgwODA1OTU0MDE@._V1_SX214_AL_.jpg" width="220" height="342">
+        <h2>The Big Lebowski</h2>
+    </div>
+    <a href="http://www.imdb.com/title/tt0118715/" class="imdb-link" target="_blank" title="Show more on imdb">more on imdb</a>
 </div>
 
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="None" data-toggle="modal" data-target="#trailer">
-    <img src="http://ia.media-imdb.com/images/M/MV5BNjYwNTA3MDIyMl5BMl5BanBnXkFtZTYwMjIxNjA3._V1_SX214_AL_.jpg" width="220" height="342">
-    <h2>Napoleon Dynamite</h2>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ZHDi_AnqwN4" data-toggle="modal" data-target="#trailer">
+    <div title="show preview">
+        <img src="http://ia.media-imdb.com/images/M/MV5BNjYwNTA3MDIyMl5BMl5BanBnXkFtZTYwMjIxNjA3._V1_SX214_AL_.jpg" width="220" height="342">
+        <h2>Napoleon Dynamite</h2>
+    </div>
+    <a href="http://www.imdb.com/title/tt0374900/" class="imdb-link" target="_blank" title="Show more on imdb">more on imdb</a>
 </div>
 
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="None" data-toggle="modal" data-target="#trailer">
-    <img src="http://ia.media-imdb.com/images/M/MV5BMjE0ODk2NjczOV5BMl5BanBnXkFtZTYwNDQ0NDg4._V1_SY317_CR4,0,214,317_AL_.jpg" width="220" height="342">
-    <h2>Pulp Fiction</h2>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="s7EdQ4FqbhY" data-toggle="modal" data-target="#trailer">
+    <div title="show preview">
+        <img src="http://ia.media-imdb.com/images/M/MV5BMjE0ODk2NjczOV5BMl5BanBnXkFtZTYwNDQ0NDg4._V1_SY317_CR4,0,214,317_AL_.jpg" width="220" height="342">
+        <h2>Pulp Fiction</h2>
+    </div>
+    <a href="http://www.imdb.com/title/tt0110912/" class="imdb-link" target="_blank" title="Show more on imdb">more on imdb</a>
 </div>
 
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="None" data-toggle="modal" data-target="#trailer">
-    <img src="http://ia.media-imdb.com/images/M/MV5BMTU0MzQyNTExMV5BMl5BanBnXkFtZTgwMjA0Njk1MDE@._V1_SX214_AL_.jpg" width="220" height="342">
-    <h2>Groundhog Day</h2>
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="tSVeDx9fk60" data-toggle="modal" data-target="#trailer">
+    <div title="show preview">
+        <img src="http://ia.media-imdb.com/images/M/MV5BMTU0MzQyNTExMV5BMl5BanBnXkFtZTgwMjA0Njk1MDE@._V1_SX214_AL_.jpg" width="220" height="342">
+        <h2>Groundhog Day</h2>
+    </div>
+    <a href="http://www.imdb.com/title/tt0107048/" class="imdb-link" target="_blank" title="Show more on imdb">more on imdb</a>
 </div>
 
     </div>
