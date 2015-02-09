@@ -48,6 +48,33 @@
             top: 0;
             background-color: white;
         }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        .next, .prev {
+            height: 330px;
+            width: 38px;
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+        .next:hover, .prev:hover {
+            color: white;
+        }
+        .next:visited, .prev:visited {
+            color: white;
+        }
+        .prev {
+            margin-left: -38px;
+            margin-top: 30px;
+        }
+        .next {
+            margin-right: -38px;
+            margin-top: -330px;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -56,9 +83,9 @@
             // reliable way to ensure the video stops playing in IE
             $("#trailer-video-container").empty();
         });
-        // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
-            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+
+        var showTrailer = function($movie) {
+            var trailerYouTubeId = $movie.attr('data-trailer-youtube-id');
             var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
             $("#trailer-video-container").empty().append($("<iframe></iframe>", {
               'id': 'trailer-video',
@@ -66,12 +93,45 @@
               'src': sourceUrl,
               'frameborder': 0
             }));
+            $("#trailer-video-container").data("current_movie", $movie.index());
+            if ($movie.index() > 0) {
+                $(".prev").show();
+            } else {
+                $(".prev").hide();
+            }
+
+            if ($movie.index() < $(".movie-tile").size() - 1) {
+                $(".next").show();
+            } else {
+                $(".next").hide();
+            }
+        };
+
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            showTrailer($(this));
         });
-        // Animate in the movies when the page loads
+
+        $(document).on('click', '.next', function (e) {
+            // Show next trailer
+            e.preventDefault();
+            e.stopPropagation();
+            var i = $("#trailer-video-container").data("current_movie");
+            showTrailer($($(".movie-tile").get(i + 1)));
+        });
+
+        $(document).on('click', '.prev', function (e) {
+            // Show previous trailer
+            e.preventDefault();
+            e.stopPropagation();
+            var i = $("#trailer-video-container").data("current_movie");
+            showTrailer($($(".movie-tile").get(i - 1)));
+        });
+
         $(document).ready(function () {
-          $('.movie-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
-          });
+            $('.movie-tile').hide().first().show("fast", function showNext() {
+                $(this).next("div").show("fast", showNext);
+            });
         });
     </script>
 </head>
@@ -82,6 +142,7 @@
     <!-- Trailer Video Modal -->
     <div class="modal" id="trailer">
       <div class="modal-dialog">
+        <a href="#" class="prev fl" title="Previous">Prev</a>
         <div class="modal-content">
           <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
             <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
@@ -89,6 +150,7 @@
           <div class="scale-media" id="trailer-video-container">
           </div>
         </div>
+        <a href="#" class="next fr" title="Next">Next</a>
       </div>
     </div>
     
