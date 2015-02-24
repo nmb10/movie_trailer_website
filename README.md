@@ -1,6 +1,6 @@
 # Favorite movie trailers
 
-Collection of my favorite movies with previews. This is the first final project of the Full Stack Web Developer by udacity.
+Collection of my favorite movies with previews. This is the first final project of the Full Stack Web Developer Nanodegree by udacity.
 
 ## Installation
 
