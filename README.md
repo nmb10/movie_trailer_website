@@ -13,6 +13,7 @@ git clone https://github.com/nmb10/movie_trailer_website.git
 
 Execute from shell:
 ```bash
+cd movie_trailer_website
 python movies.py
 ```
 Page containing my favorite movies will be opened in the browser. To show preview click on the movie. Preview popup allows to switch to next/previous previews.
